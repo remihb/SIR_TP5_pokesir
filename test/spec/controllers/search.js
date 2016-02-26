@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: SearchCtrl', function () {
+describe('Controller: PokeSearchCtrl', function () {
 
   // load the controller's module
   beforeEach(module('pokesirApp'));
 
-  var SearchCtrl,
+  var PokeSearchCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    SearchCtrl = $controller('SearchCtrl', {
+    PokeSearchCtrl = $controller('PokeSearchCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(SearchCtrl.awesomeThings.length).toBe(3);
+    expect(PokeSearchCtrl.awesomeThings.length).toBe(3);
   });
 });

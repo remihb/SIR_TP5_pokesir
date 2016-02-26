@@ -1,1 +1,29 @@
-<p>This is the search view.</p>
+<div class="starter-template">
+    <h1>Pokésir</h1>
+
+    <!-- Search -->
+    <div ng-controller="PokeSearchCtrl">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="repeatSelect" class="col-md-3 control-label"> Selectionnez un pokémon: </label>
+                <div class="col-md-2">
+                    <select name="repeatSelect" id="repeatSelect" class="form-control" ng-model="selectPokemonId">
+                        <option ng-repeat="pokemon in pokemonlist | listFiltered:defaultValue" value="{{pokemon.id}}">{{pokemon.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" ng-model="defaultValue" placeholder="filtre par nom">
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Pokémon information -->
+    <div ng-controller="pokeInformations">
+        <div ng-model="pokemon">{{pokemon | prettyJSON}}
+        </div>
+    </div>
+</div>

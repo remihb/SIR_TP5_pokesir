@@ -31,7 +31,7 @@ angular
       })
       .when('/search', {
         templateUrl: 'views/search.html',
-        controller: 'SearchCtrl',
+        controller: 'PokeSearchCtrl',
         controllerAs: 'search'
       })
       .otherwise({
