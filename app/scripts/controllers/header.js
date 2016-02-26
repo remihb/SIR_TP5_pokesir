@@ -14,8 +14,7 @@ laxcomma:true
 * Controller of the pokesirApp
 */
 angular.module('pokesirApp')
-.controller('HeaderCtrl', function ($scope, $location, $log) {
-    $log.info($location.path());
+.controller('HeaderCtrl', function ($scope, $location) {
     $scope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
