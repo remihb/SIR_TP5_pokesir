@@ -189,3 +189,26 @@ border-bottom-color: #555;
         color: #333;
     }
 }
+
+.frame {
+    border : 1px solid #fdd06d;
+    padding : 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: white;
+    min-height: 400px;
+    max-width: 600px;
+}
+.frame > h1 {
+    margin: 10px 0 20px 0;
+}
+.frame .ui-select-toggle {
+    border-color: #fee8b8;
+}
+.frame .ui-select{
+    margin-left: 50%;
+}
+.frame .img-loader{
+    margin: auto;
+    margin-top: 20px;
+}

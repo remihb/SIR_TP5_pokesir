@@ -17,34 +17,40 @@ angular.module('pokesirApp')
 .controller('PokeSearchCtrl',function($scope, $log, $location, PokeFactory, PokeDataService) {
     $scope.pokemon = PokeDataService.pokemon;
     $scope.pokemonList = PokeDataService.pokemonList;
+    $scope.loading = true;
     PokeFactory.pokemons.query().$promise
     .then(function(elem) {
-        $scope.pokemonList = _.map(elem, function(el){
-            return {
-                name    : el.name
-                , url    : el.url
-            };
-        });
+        $scope.loading = false;
+        $scope.pokemonList = elem;
     })
     .catch(function(error){
+        $scope.loading = false;
         $log.warn(error);
     })
     ;
+    $scope.changePlaceholder = function(){
+        $('.ui-select-search').attr('placeholder', 'Filter by name');
+    };
 
-    $scope.$watch(function () {
-        return PokeDataService.pokemon;
-    },
-    function(nv, old) {
-            if (!_.isEmpty(nv)){
-            PokeFactory.request(nv.selected.url).get().$promise
-            .then(function(poke){
-                PokeDataService.pokeInfo = poke;
-                $scope.pokemon.selected = undefined;
-                $location.path("/pokemon/" + poke.id);
-            })
-            .catch(function(error){
-                $log.warn(error);
-            });
-        }
-    }, true);
+    $scope.redirect = function(el){
+        var id = el.url.split('/');
+        $location.path("/pokemon/" + id[id.length - 2]);
+    };
+
+    // $scope.$watch(function () {
+    //     return PokeDataService.pokemon;
+    // },
+    // function(nv, old) {
+    //     if (!_.isEmpty(nv) && nv.selected !== undefined){
+    //         PokeFactory.request(nv.selected.url).get().$promise
+    //         .then(function(poke){
+    //             PokeDataService.pokeInfo = poke;
+    //             $scope.pokemon.selected = undefined;
+    //             $location.path("/pokemon/" + poke.id);
+    //         })
+    //         .catch(function(error){
+    //             $log.warn(error);
+    //         });
+    //     }
+    // }, true);
 });

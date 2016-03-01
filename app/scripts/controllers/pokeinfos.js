@@ -14,6 +14,16 @@ laxcomma:true
 * Controller of the pokesirApp
 */
 angular.module('pokesirApp')
-.controller('PokeInfosCtrl', function($scope, $log, $location, PokeFactory, PokeDataService){
-    $scope.pokeInfo = PokeDataService.pokeInfo;
+.controller('PokeInfosCtrl', function($scope, $log, $routeParams, PokeFactory){
+    $scope.loading = true;
+    PokeFactory.pokemons.get({id : $routeParams.id}).$promise
+    .then(function(elem) {
+        $scope.loading = false;
+        $scope.pokeInfo = elem;
+    })
+    .catch(function(error){
+        $scope.loading = false;
+        $log.warn(error);
+    })
+    ;
 });

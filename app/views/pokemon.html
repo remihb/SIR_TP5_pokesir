@@ -1,6 +1,10 @@
-<div ng-controller="PokeInfosCtrl">
-    <div ng-model="pokeInfo">
-        <img src="http://img.pokemondb.net/artwork/{{pokeInfo.name}}.jpg">
-        <img src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{pokeInfo.name}}.gif">
+<div class= "frame">
+    <div ng-controller="PokeInfosCtrl">
+        <h1>{{pokeInfo.name}}</h1>
+        <div ng-model="pokeInfo">
+            <img src="http://img.pokemondb.net/artwork/{{pokeInfo.name}}.jpg">
+            <img src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{pokeInfo.name}}.gif">
+            <img class="img-loader" src="images/pokeball_loading.gif" height="180px" ng-hide="!loading"></span>
+        </div>
     </div>
 </div>
