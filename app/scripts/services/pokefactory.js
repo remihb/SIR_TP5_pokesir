@@ -7,14 +7,18 @@ laxcomma:true
 
 /**
  * @ngdoc service
- * @name pokesirApp.pokeFactory
+ * @name pokesirApp.PokeFactory
  * @description
- * # pokeFactory
+ * # PokeFactory
  * Factory in the pokesirApp.
  */
 angular.module('pokesirApp')
-  .factory('pokeFactory', function($resource) {
+  .factory('PokeFactory', function($resource) {
+      var baseurl = "http://pokeapi.co/";
       return {
-          pokemons   : $resource('http://pokeapi.co/api/v2/pokemon/:id/')
+          pokemons  : $resource(baseurl + 'api/v2/pokemon/:id/')
+          , request : function(url){
+              return $resource(url);
+          }
       };
   });
