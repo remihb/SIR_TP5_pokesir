@@ -1,3 +1,9 @@
+/* jshint
+laxcomma:true
+, laxbreak:true
+, unused : false
+*/
+
 'use strict';
 
 /**
@@ -16,7 +22,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.select'
+    'ui.select',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -34,6 +40,11 @@ angular
         templateUrl: 'views/search.html',
         controller: 'PokeSearchCtrl',
         controllerAs: 'search'
+      })
+      .when('/pokemon/:id', {
+        templateUrl: 'views/pokemon.html',
+        controller: 'PokeInfosCtrl',
+        controllerAs: 'pokemon'
       })
       .otherwise({
         redirectTo: '/'
