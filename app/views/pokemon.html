@@ -1,10 +1,78 @@
 <div class= "frame">
     <div ng-controller="PokeInfosCtrl">
-        <h1>{{pokeInfo.name}}</h1>
-        <div ng-model="pokeInfo">
-            <img src="http://img.pokemondb.net/artwork/{{pokeInfo.name}}.jpg">
-            <img src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{pokeInfo.name}}.gif">
-            <img class="img-loader" src="images/pokeball_loading.gif" height="180px" ng-hide="!loading"></span>
+        <div>
+            <h1>{{pokeInfo.main.name}}
+                <img src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{pokeInfo.main.name}}.gif" alt="">
+            </h1>
+        </div>
+        <div ng-model="pokeInfo" ng-hide="loading">
+            <div class="block col-md-4">
+                <img class="picture" src="http://img.pokemondb.net/artwork/{{pokeInfo.main.name}}.jpg" alt="">
+            </div>
+            <div class="block col-md-4">
+                <table class="pokedata"><h3>General data</h3>
+                    <tbody>
+                        <tr>
+                            <th>Names</th>
+                            <td>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#intname" aria-expanded="false" aria-controls="intname">
+                                    <span class="intname-name">Name</span>
+                                    <small class="intname-lang" style="padding-top:2px;">Lang</small>
+                                </button>
+                                <ul id="intname" class="accordion-body collapse list-unstyled">
+                                    <li ng-repeat="item in pokeInfo.rest.names">
+                                        <div>
+                                            <span ng-bind-html="item.name" class="intname-name"></span>
+                                            <small ng-bind-html="item.language.name" class="intname-lang"></small>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>National n°</th>
+                            <td>{{pokeInfo.main.id | pad}}</td>
+                        </tr>
+                        <tr>
+                            <th>Type</th>
+                            <td>
+                                <a href="{{item.type.url}}" class="btn btn-warning btn-xs type" ng-repeat="item in pokeInfo.main.types">{{item.type.name}}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Height</th>
+                            <td><p>{{pokeInfo.main.height * 10}}cm</p></td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td><p>{{pokeInfo.main.weight / 10}}kg</p></td>
+                        </tr>
+                        <tr>
+                            <th>Abilities</th>
+                            <td>
+                                <a href="{{item.ability .url}}" class="btn btn-danger btn-xs type" ng-repeat="item in pokeInfo.main.abilities">{{item.ability.name}}</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="block col-md-4">
+                <table class="pokedata"><h3>Base Stats</h3>
+                    <tbody>
+                        <tr ng-repeat="item in pokeInfo.main.stats">
+                            <th>{{item.stat.name}}</th>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{item.base_stat}}" aria-valuemin="0" aria-valuemax="100" style="width:{{item.base_stat}}%;">
+                                        {{item.base_stat}}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <img class="img-loader" src="images/pokeball_loading.gif" height="180px" ng-hide="!loading"></span>
 </div>

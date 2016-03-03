@@ -50,15 +50,10 @@ html, body {
     padding-left: 10px;
 }
 
-.container-narrow > hr {
-    /*margin: 30px 0;*/
-}
-
 /* Main marketing message and sign up button */
 .container-body {
     padding: 20px;
-    margin: 80px auto 80px 10%;
-    text-align: center;
+    margin: 50px auto 50px auto;
     background-color: transparent;
 }
 .jumbotron {
@@ -79,26 +74,22 @@ html, body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+/*@media screen and (min-width: 768px) {
     .container {
-        /*max-width: 730px;*/
+
     }
-    /* Remove the padding we set earlier */
     .header,
     .marketing,
     .footer {
         padding-left: 0;
         padding-right: 0;
     }
-    /* Space out the masthead */
     .header {
-        /*margin-bottom: 30px;*/
     }
-    /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
         border-bottom: 0;
     }
-}
+}*/
 
 /* navbar */
 .navbar {
@@ -180,7 +171,7 @@ border-bottom-color: #555;
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #fdd06d;
 }
-@media (max-width: 567px) {
+/*@media (max-width: 567px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
     }
@@ -188,27 +179,86 @@ border-bottom-color: #555;
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
         color: #333;
     }
-}
+}*/
 
+/* frame inside container and child elements*/
 .frame {
     border : 1px solid #fdd06d;
-    padding : 20px;
-    margin: 20px;
+    padding : 10px;
+    margin-left: auto;
     border-radius: 10px;
     background-color: white;
-    min-height: 400px;
-    max-width: 600px;
+    min-height: 350px;
+    min-width: 280px;
+    overflow: hidden;
 }
-.frame > h1 {
+.frame  h1 {
     margin: 10px 0 20px 0;
+    line-height: 100px;
+    text-align: center;
+}
+.frame  h1 > img {
+    /*vertical-align: top;*/
+    position: absolute;
+}
+.frame .block {
+    display: inline-block;
+    /*text-align: center;*/
 }
 .frame .ui-select-toggle {
     border-color: #fee8b8;
 }
-.frame .ui-select{
-    margin-left: 50%;
+.frame .ui-select-choices {
+    max-height: 150px;
+}
+.frame .picture {
+    margin: auto;
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+
 }
 .frame .img-loader{
     margin: auto;
     margin-top: 20px;
+    display: block;
+}
+.frame .intname-name{
+    float: left;
+    margin-right: 10px;
+}
+.frame .intname-lang{
+    float: right;
+    margin-left: 10px;
+}
+.frame .bold{
+    font-weight: bold;
+}
+/* table style */
+.frame .pokedata{
+    margin: 20px;
+}
+.frame .pokedata tr {
+    border-top: 1px solid #ececec;
+    line-height: 40px;
+}
+.frame .pokedata tr:last-child{
+    border-bottom: 1px solid #ececec;
+}
+.frame .pokedata th{
+    text-align: right;
+    padding-right: 20px;
+    color: #777;
+}
+.frame .pokedata td .type {
+    margin-right: 10px;
+}
+.frame .pokedata td .progress {
+    min-width: 100px;
+    margin: auto;
+}
+.frame .pokedata ul li {
+    line-height: 20px;
+    display: table-row;
 }

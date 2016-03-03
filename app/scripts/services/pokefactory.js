@@ -17,6 +17,7 @@ angular.module('pokesirApp')
       var baseurl = "http://pokeapi.co/";
       return {
           pokemons  : $resource(baseurl + 'api/v2/pokemon/:id/')
+          , pokemonsOther  : $resource(baseurl + 'api/v2/pokemon-species/:id/')
           , request : function(url){
               return $resource(url);
           }
