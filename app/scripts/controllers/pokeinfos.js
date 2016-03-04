@@ -2,6 +2,7 @@
 laxcomma:true
 , laxbreak:true
 , unused : false
+, loopfunc: true
 */
 
 'use strict';
@@ -14,21 +15,43 @@ laxcomma:true
 * Controller of the pokesirApp
 */
 angular.module('pokesirApp')
-.controller('PokeInfosCtrl', function($scope, $log, $routeParams, PokeFactory){
+.controller('PokeInfosCtrl', function($scope, $log, $routeParams, PokeFactory, PokeEvol){
     $scope.loading = true;
     var id = $routeParams.id;
     PokeFactory.pokemons.get({id : id}).$promise
     .then(function(elem) {
         PokeFactory.pokemonsOther.get({id: id}).$promise
         .then(function(rest){
-            $scope.loading = false;
-            $scope.pokeInfo = {
-                main :elem
-                , rest : rest
-            };
+            if (rest.evolution_chain !== undefined){
+                PokeFactory.request(rest.evolution_chain.url).get().$promise
+                .then(function(evol){
+                    $scope.loading = false;
+                    var evolChain = [];
+                    PokeEvol(evol.chain, evolChain);
+                    $scope.pokeInfo = {
+                        main :elem
+                        , rest : rest
+                        , evolChain : evolChain
+                    };
+
+                })
+                .catch(function(error){
+                    $scope.loading = false;
+                    $log.warn(error);
+                })
+                ;
+            }
+            else {
+                $scope.loading = false;
+                $scope.pokeInfo = {
+                    main :elem
+                    , rest : rest
+                };
+            }
         })
         .catch(function(error){
             $scope.loading = false;
+            $log.warn(error);
         })
         ;
     })
