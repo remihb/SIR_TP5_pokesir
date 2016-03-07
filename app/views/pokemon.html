@@ -1,11 +1,11 @@
 <div class= "frame">
-    <div ng-controller="PokeInfosCtrl">
+    <div ng-controller="PokeInfosCtrl" ng-hide="!pokeInfo">
         <div>
             <h1>{{pokeInfo.main.name}}
                 <img src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{pokeInfo.main.name}}.gif" alt="">
             </h1>
         </div>
-        <div ng-model="pokeInfo" ng-hide="loading">
+        <div ng-model="pokeInfo">
             <div class="block blabla">
                 <img class="picture" src="http://img.pokemondb.net/artwork/{{pokeInfo.main.name}}.jpg" alt="">
             </div>

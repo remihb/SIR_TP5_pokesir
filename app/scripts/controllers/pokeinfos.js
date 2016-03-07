@@ -37,6 +37,7 @@ angular.module('pokesirApp')
                 })
                 .catch(function(error){
                     $scope.loading = false;
+                    add_alert();
                     $log.warn(error);
                 })
                 ;
@@ -51,12 +52,15 @@ angular.module('pokesirApp')
         })
         .catch(function(error){
             $scope.loading = false;
+            add_alert();
             $log.warn(error);
         })
         ;
     })
     .catch(function(error){
+        $log.info("poke : " + $scope.pokeInfo);
         $scope.loading = false;
+        add_alert();
         $log.warn(error);
     })
     ;

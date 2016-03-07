@@ -18,14 +18,15 @@ angular.module('pokesirApp')
     $scope.pokemon = PokeDataService.pokemon;
     $scope.pokemonList = PokeDataService.pokemonList;
     $scope.loading = true;
-    PokeFactory.pokemons.query().$promise
+    PokeFactory.pokemons.get().$promise
     .then(function(elem) {
         $scope.loading = false;
-        $scope.pokemonList = elem;
+        $scope.pokemonList = elem.results;
     })
     .catch(function(error){
         $scope.loading = false;
         $log.warn(error);
+        add_alert();
     })
     ;
     $scope.changePlaceholder = function(){
@@ -36,21 +37,4 @@ angular.module('pokesirApp')
         var id = el.url.split('/');
         $location.path("/pokemon/" + id[id.length - 2]);
     };
-
-    // $scope.$watch(function () {
-    //     return PokeDataService.pokemon;
-    // },
-    // function(nv, old) {
-    //     if (!_.isEmpty(nv) && nv.selected !== undefined){
-    //         PokeFactory.request(nv.selected.url).get().$promise
-    //         .then(function(poke){
-    //             PokeDataService.pokeInfo = poke;
-    //             $scope.pokemon.selected = undefined;
-    //             $location.path("/pokemon/" + poke.id);
-    //         })
-    //         .catch(function(error){
-    //             $log.warn(error);
-    //         });
-    //     }
-    // }, true);
 });
