@@ -18,7 +18,10 @@ angular.module('pokesirApp')
 .controller('PokeInfosCtrl', function($scope, $log, $routeParams, PokeFactory, PokeEvol){
     $scope.loading = true;
     var id = $routeParams.id;
-    PokeFactory.pokemons.get({id : id}).$promise
+    $scope.src = function(name){
+        return "http://img.pokemondb.net/sprites/black-white/anim/normal/" + name + ".gif";
+    };
+    PokeFactory.pokemon.get({id : id}).$promise
     .then(function(elem) {
         PokeFactory.pokemonsOther.get({id: id}).$promise
         .then(function(rest){
@@ -33,11 +36,9 @@ angular.module('pokesirApp')
                         , rest : rest
                         , evolChain : evolChain
                     };
-
                 })
                 .catch(function(error){
                     $scope.loading = false;
-                    add_alert();
                     $log.warn(error);
                 })
                 ;
@@ -52,15 +53,12 @@ angular.module('pokesirApp')
         })
         .catch(function(error){
             $scope.loading = false;
-            add_alert();
             $log.warn(error);
         })
         ;
     })
     .catch(function(error){
-        $log.info("poke : " + $scope.pokeInfo);
         $scope.loading = false;
-        add_alert();
         $log.warn(error);
     })
     ;

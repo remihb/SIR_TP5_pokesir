@@ -26,7 +26,6 @@ angular.module('pokesirApp')
         if (!_.isEmpty(listEvol.evolves_to)){
             _.forEach(listEvol.evolves_to, function(next){
                 getChainEvol(next, array);
-                // getChainEvol(listEvol.evolves_to[0], array);
             });
         }
     };

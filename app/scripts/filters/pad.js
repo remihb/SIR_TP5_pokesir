@@ -15,7 +15,7 @@ angular.module('pokesirApp')
             return null;
         }
         else {
-            max = (max === undefined) ? 5 : max;
+            max = (max === undefined) ? 3 : max;
             str = str.toString();
             return str.length < max ? pad("0" + str, max) : str;
             }

@@ -2,6 +2,7 @@
 laxcomma:true
 , laxbreak:true
 , unused : false
+, loopfunc : true
 */
 
 'use strict';
@@ -18,6 +19,7 @@ angular.module('pokesirApp')
     $scope.pokemon = PokeDataService.pokemon;
     $scope.pokemonList = PokeDataService.pokemonList;
     $scope.loading = true;
+    var next = true;
     PokeFactory.pokemons.get().$promise
     .then(function(elem) {
         $scope.loading = false;
@@ -26,7 +28,6 @@ angular.module('pokesirApp')
     .catch(function(error){
         $scope.loading = false;
         $log.warn(error);
-        add_alert();
     })
     ;
     $scope.changePlaceholder = function(){

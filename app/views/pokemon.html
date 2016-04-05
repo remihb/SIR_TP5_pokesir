@@ -1,15 +1,13 @@
 <div class= "frame">
     <div ng-controller="PokeInfosCtrl" ng-hide="!pokeInfo">
         <div>
-            <h1>{{pokeInfo.main.name}}
-                <img src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{pokeInfo.main.name}}.gif" alt="">
-            </h1>
+            <h1>{{pokeInfo.main.name}}</h1>
         </div>
         <div ng-model="pokeInfo">
-            <div class="block blabla">
+            <div class="block">
                 <img class="picture" src="http://img.pokemondb.net/artwork/{{pokeInfo.main.name}}.jpg" alt="">
             </div>
-            <div class="block blabla">
+            <div class="block">
                 <table class="pokedata"><h3>General infos</h3>
                     <tbody>
                         <tr>
@@ -56,7 +54,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="block blabla">
+            <div class="block">
                 <table class="pokedata"><h3>Base Stats</h3>
                     <tbody>
                         <tr ng-repeat="item in pokeInfo.main.stats">
@@ -72,7 +70,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="block blabla">
+            <div class="block">
                 <table class="pokedata"><h3>Other infos</h3>
                     <tbody>
                         <tr>
@@ -100,21 +98,35 @@
                     </tbody>
                 </table>
             </div>
-            <div class="block blabla">
+            <div class="block">
                 <table class="pokedata"><h3>Evolution Chart</h3>
                     <tbody>
-                        <tr ng-repeat="item in pokeInfo.evolChain">
-                            <th>{{item.name}}</th>
-                            <td>
-                                <img class="picture" src="http://img.pokemondb.net/sprites/black-white/anim/normal/{{item.name}}.gif" alt="">
-                                <a href="/#/pokemon/{{item.id}}">#{{item.id | pad}}</a>
-                                <p ng-hide="!item.level">Level {{item.level}}</p>
+                        <tr ng-repeat-start="item in pokeInfo.evolChain">
+                            <td ng-show="item.level">
+                                <span class="glyphicon glyphicon-arrow-down"></span> evolve at
+                            </td>
+                            <td ng-show="item.level">
+                                level {{item.level}} <span class="glyphicon glyphicon-arrow-down"></span>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                        <tr ng-repeat-end>
+                            <td><a href="/#/pokemon/{{item.id}}">#{{item.name}}</a></td>
+                            <td>
+                                <img id="{{item.name}}" class="picture" ng-src="{{src(item.name)}}" pokeimage />
+                            </td>
+                        </tr>
+                        <!-- <tr ng-repeat="item in pokeInfo.evolChain">
+                        <td>{{item.name}}</td>
+                        <td>
+                        <img id="{{item.name}}" class="picture" ng-src="{{src(item.name)}}" pokeimage />
+                        <a href="/#/pokemon/{{item.id}}">#{{item.id | pad}}</a>
+                        <p ng-hide="!item.level">Level {{item.level}}</p>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
     </div>
-    <img class="img-loader" src="images/pokeball_loading.gif" height="180px" ng-hide="!loading"></span>
+</div>
+</div>
+<img class="img-loader" src="images/pokeball_loading.gif" height="180px" ng-hide="!loading"></span>
 </div>
