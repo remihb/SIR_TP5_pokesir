@@ -14,8 +14,9 @@
                             <th>Names</th>
                             <td>
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#intname" aria-expanded="false" aria-controls="intname">
-                                    <span class="intname-name">Name</span>
-                                    <small class="intname-lang" style="padding-top:2px;">Lang</small>
+                                    <span class="block">Name</span>
+                                    <span class="glyphicon glyphicon-arrow-down block"></span>
+                                    <small class="block">Lang</small>
                                 </button>
                                 <ul id="intname" class="accordion-body collapse list-unstyled">
                                     <li ng-repeat="item in pokeInfo.rest.names">
@@ -34,7 +35,7 @@
                         <tr>
                             <th>Type</th>
                             <td>
-                                <a href="{{item.type.url}}" class="btn btn-warning btn-xs type" ng-repeat="item in pokeInfo.main.types">{{item.type.name}}</a>
+                                <a class="btn btn-warning btn-xs type" ng-repeat="item in pokeInfo.main.types">{{item.type.name}}</a>
                             </td>
                         </tr>
                         <tr>
@@ -48,7 +49,7 @@
                         <tr>
                             <th>Abilities</th>
                             <td>
-                                <a href="{{item.ability .url}}" class="btn btn-danger btn-xs type" ng-repeat="item in pokeInfo.main.abilities">{{item.ability.name}}</a>
+                                <a class="btn btn-danger btn-xs type" ng-repeat="item in pokeInfo.main.abilities">{{item.ability.name}}</a>
                             </td>
                         </tr>
                     </tbody>

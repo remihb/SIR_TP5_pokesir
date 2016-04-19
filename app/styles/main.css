@@ -224,11 +224,10 @@ border-bottom-color: #555;
 }
 .frame .intname-name{
     float: left;
-    margin-right: 10px;
+    margin-right: 40px;
 }
 .frame .intname-lang{
     float: right;
-    margin-left: 10px;
 }
 .frame .bold{
     font-weight: bold;
