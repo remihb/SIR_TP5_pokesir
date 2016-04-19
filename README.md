@@ -37,4 +37,5 @@ Enfin une directive a été créée afin de charger différents sprites de poké
 
 - **Autre**  
 Utilsation des balises `ng-show` `ng-hide` pour afficher un pokéball de chargement pendant la récupération des informations depuis l'api.  
-<br>L'image de fond se redimensionne en fonction de la hauteur et/ou de la largeur de la fenêtre, les éléments de la page sont presque entièrement responsive pour téléphone et tablette.
+<br>L'image de fond se redimensionne en fonction de la hauteur et/ou de la largeur de la fenêtre, les éléments de la page sont presque entièrement responsive pour téléphone et tablette.  
+<br>Et quelques autres trucs, des filtres, des `ng-disabled`, des `ng-repeat-start/end`, ... Bref, on s'amuse!
